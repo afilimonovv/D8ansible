@@ -2,3 +2,9 @@
 - name: Building application
   hosts:build
   become:yes
+
+  tasks:
+    -name:Ensure git is present
+    apt:
+      name: git
+      state:present

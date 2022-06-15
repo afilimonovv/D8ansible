@@ -2,3 +2,9 @@
 - name: Launching the application
   hosts:prod
   become:yes
+
+  tasks:
+    -name: Enshure git is present
+    apt:
+      name:git
+      state:present
