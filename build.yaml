@@ -4,12 +4,12 @@
   become: yes
 
   tasks:
-    - name:Ensure git is present
+    - name: Ensure git is present
       apt:
-      name: git
-      state: present
+        name: git
+        state: present
 
     - name:Ensure java is present
-  apt:
-    name: defuult-jdk
-    state: present
+      apt:
+        name: defuult-jdk
+        state: present
