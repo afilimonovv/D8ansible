@@ -8,3 +8,8 @@
     apt:
       name: git
       state:present
+
+  -name:Ensure java is present
+  apt:
+    name: defuult-jdk
+    state:present
