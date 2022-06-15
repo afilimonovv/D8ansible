@@ -11,5 +11,5 @@
 
     - name: Ensure java is present
       apt:
-        name: defuult-jdk
+        name: default-jdk
         state: present
