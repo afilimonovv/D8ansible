@@ -1,3 +1,4 @@
 ---
 - name: Launching the application
   hosts:prod
+  become:yes
