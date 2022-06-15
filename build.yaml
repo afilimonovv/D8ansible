@@ -1,0 +1,4 @@
+---
+- name: Building application
+  hosts:build
+  become:yes
