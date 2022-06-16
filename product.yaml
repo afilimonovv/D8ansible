@@ -1,17 +1,30 @@
 ---
 - name: Launching the application
-  hosts:prod
-  become:yes
+  hosts: prod
+  become: yes
 
   tasks:
     - name: Enshure git is present
-    apt:
-      name:git
-      state:present
+      apt:
+        name: git
+        state: present
 
     - name: Ensure java is present
-    apt:
-      name: default-jdk
-      state: present
+      apt:
+        name: default-jdk
+        state: present
 
-    - name:
+    - name: Ensure tomcat is present
+      apt:
+        name: tomcat9
+        state: present
+
+    - name: Copy project to prod
+      git:
+        repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+        dest: /root/project
+
+    - name: Copy app to prod
+        copy:
+          src: /root/project/hello-1.0.war
+          dest: /var/lib/tomcat9/webapps
