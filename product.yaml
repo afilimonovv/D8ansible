@@ -28,7 +28,4 @@
       copy:
         src: /tmp/project/hello-1.0.war
         dest: /var/lib/tomcat9/webapps
-    - name: tomcat restart
-      service:
-        name: tomcat9
-        state: restarted
+
