@@ -13,3 +13,26 @@
       apt:
         name: default-jdk
         state: present
+
+    - name: Ensure maven is present
+      apt:
+        name: maven
+        state: present
+
+    - name: Copy for build
+      git:
+        repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+        dest: /root/project
+
+    -name: Building project
+    shell:
+      cmd: mvn package
+      chdir: /root/project
+
+    - name: Copy to me
+    fetch:
+      src: /root/project/target/hello-1.0.war
+      dest: /root/project
+      flat: yes
+
+

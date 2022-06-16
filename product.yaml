@@ -4,7 +4,14 @@
   become:yes
 
   tasks:
-    -name: Enshure git is present
+    - name: Enshure git is present
     apt:
       name:git
       state:present
+
+    - name: Ensure java is present
+    apt:
+      name: default-jdk
+      state: present
+
+    - name:
