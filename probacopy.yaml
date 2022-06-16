@@ -1,0 +1,11 @@
+
+---
+- name: Proba copy
+  hosts: build
+  become: yes
+
+    - name: Copy to me
+      fetch:
+        src: /root/project/target/probacopy.txt
+        dest: /home/serv1/project
+        flat: yes
