@@ -1,0 +1,67 @@
+---
+- name: Building application
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: Ensure git is present
+      apt:
+        name: git
+        state: present
+
+    - name: Ensure java is present
+      apt:
+        name: default-jdk
+        state: present
+
+    - name: Ensure maven is present
+      apt:
+        name: maven
+        state: present
+
+    - name: Copy for build
+      git:
+        repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+        dest: /root/project
+
+    - name: Building project
+      shell:
+        cmd: mvn package
+        chdir: /root/project
+
+    - name: Copy to me
+      fetch:
+        src: /root/project/target/hello-1.0.war
+        dest: /tmp/project/
+        flat: yes
+
+
+- name: Launching the application
+  hosts: prod
+  become: yes
+
+  tasks:
+    - name: Ensure git is present
+      apt:
+        name: git
+        state: present
+
+    - name: Ensure java is present
+      apt:
+        name: default-jdk
+        state: present
+
+    - name: Ensure tomcat is present
+      apt:
+        name: tomcat9
+        state: present
+
+    - name: Copy project to prod
+      git:
+        repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+        dest: /root/project
+
+    - name: Copy app to prod
+      copy:
+        src: /tmp/project/hello-1.0.war
+        dest: /var/lib/tomcat9/webapps
