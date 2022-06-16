@@ -33,7 +33,7 @@
     - name: Copy to me
       fetch:
         src: /root/project/target/hello-1.0.war
-        dest: /home/serv1/project/
+        dest: /home/serv1/project
         flat: yes
 
 
