@@ -4,6 +4,7 @@
   hosts: build
   become: yes
 
+  tasks:
     - name: Copy to me
       fetch:
         src: /root/project/target/probacopy.txt
