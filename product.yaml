@@ -25,6 +25,6 @@
         dest: /root/project
 
     - name: Copy app to prod
-        copy:
-          src: /root/project/hello-1.0.war
-          dest: /var/lib/tomcat9/webapps
+      copy:
+        src: /root/project/hello-1.0.war
+        dest: /var/lib/tomcat9/webapps
