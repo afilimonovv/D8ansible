@@ -1,3 +1,4 @@
+
 ---
 - name: Building application
   hosts: build
@@ -24,15 +25,15 @@
         repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
         dest: /root/project
 
-    -name: Building project
-    shell:
-      cmd: mvn package
-      chdir: /root/project
+    - name: Building project
+      shell:
+        cmd: mvn package
+        chdir: /root/project
 
     - name: Copy to me
-    fetch:
-      src: /root/project/target/hello-1.0.war
-      dest: /root/project
-      flat: yes
+      fetch:
+        src: /root/project/target/hello-1.0.war
+        dest: /root/project
+        flat: yes
 
 
