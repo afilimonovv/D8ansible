@@ -7,6 +7,6 @@
   tasks:
     - name: Copy to me
       fetch:
-        src: /root/project/target/probacopy.txt
+        src: /root/project/target/hello-1.0.war
         dest: /tmp/project/
         flat: yes
