@@ -8,5 +8,5 @@
     - name: Copy to me
       fetch:
         src: /root/project/target/probacopy.txt
-        dest: /home/serv1/project/
+        dest: /tmp/project/
         flat: yes
